@@ -8,10 +8,11 @@ const EVENTO = {
   subtitulo: 'Una invitacion de recibida pensada para bajar despacio, descubrir cada bloque y llegar al final con toda la info clara.',
   fecha: 'Sabado 14 de diciembre',
   hora: '19:00 hs',
-  lugar: 'Salon a confirmar',
-  direccion: 'Agrega aqui la direccion exacta del evento',
-  mapsEmbed: 'https://www.google.com/maps?q=Buenos+Aires,+Argentina&z=14&output=embed',
-  mapsLink: 'https://maps.google.com/?q=Buenos+Aires,+Argentina',
+  lugar: 'Fiestamania Pineto',
+  direccion: 'Fiestamania Pineto',
+  mapsEmbed: 'https://www.google.com/maps?q=Fiestamania+Pineto&z=16&output=embed',
+  mapsLink:
+    'https://www.google.com/maps/place/Fiestamania+Pineto/data=!4m2!3m1!1s0x0:0x2363ddba8b730aca?sa=X&ved=1t:2428&ictx=111',
   heroImage: '/vero-hero.jpeg',
   heroBackground: '/vero-hero.jpeg',
 }

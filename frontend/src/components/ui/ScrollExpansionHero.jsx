@@ -68,6 +68,7 @@ export default function ScrollExpansionHero({
   const titleOffset = reduceMotion ? 0 : (1 - progress) * (viewport.width < 768 ? 60 : 120)
   const overlayOpacity = 0.2 + progress * 0.28
   const copyOpacity = clamp((progress - 0.52) / 0.32)
+  const isMobile = viewport.width < 768
 
   const titleParts = title?.split(' ') || []
   const firstLine = titleParts.slice(0, Math.ceil(titleParts.length / 2)).join(' ')
@@ -95,6 +96,12 @@ export default function ScrollExpansionHero({
               <motion.p
                 className="text-xs uppercase tracking-[0.45em] text-text-mid"
                 style={{ x: -titleOffset * 0.45, opacity: 0.7 + progress * 0.3 }}
+                animate={reduceMotion ? undefined : { y: [0, -4, 0] }}
+                transition={
+                  reduceMotion
+                    ? undefined
+                    : { duration: 4.8, repeat: Infinity, ease: 'easeInOut' }
+                }
               >
                 {eyebrow}
               </motion.p>
@@ -103,6 +110,12 @@ export default function ScrollExpansionHero({
                 <motion.h1
                   className="font-heading text-5xl italic leading-[0.9] text-text-dark sm:text-6xl md:text-7xl lg:text-[7rem]"
                   style={{ x: -titleOffset }}
+                  animate={reduceMotion ? undefined : { y: [0, -8, 0] }}
+                  transition={
+                    reduceMotion
+                      ? undefined
+                      : { duration: 5.5, repeat: Infinity, ease: 'easeInOut' }
+                  }
                 >
                   {firstLine}
                 </motion.h1>
@@ -110,6 +123,12 @@ export default function ScrollExpansionHero({
                   <motion.h1
                     className="mt-1 font-heading text-5xl italic leading-[0.9] text-[#9ab89a] sm:text-6xl md:text-7xl lg:text-[7rem]"
                     style={{ x: titleOffset }}
+                    animate={reduceMotion ? undefined : { y: [0, 8, 0] }}
+                    transition={
+                      reduceMotion
+                        ? undefined
+                        : { duration: 5.5, repeat: Infinity, ease: 'easeInOut' }
+                    }
                   >
                     {secondLine}
                   </motion.h1>
@@ -119,6 +138,12 @@ export default function ScrollExpansionHero({
               <motion.p
                 className="mt-6 max-w-xl text-base leading-7 text-text-mid md:mt-8 md:text-2xl md:leading-10"
                 style={{ opacity: 0.4 + progress * 0.6, y: reduceMotion ? 0 : (1 - progress) * 28 }}
+                animate={reduceMotion ? undefined : { y: [0, -6, 0] }}
+                transition={
+                  reduceMotion
+                    ? undefined
+                    : { duration: 6.2, repeat: Infinity, ease: 'easeInOut' }
+                }
               >
                 {description}
               </motion.p>
@@ -126,6 +151,12 @@ export default function ScrollExpansionHero({
               <motion.div
                 className="mt-8 flex flex-wrap gap-3 text-xs uppercase tracking-[0.24em] text-text-mid md:mt-10 md:gap-4 md:text-sm"
                 style={{ opacity: copyOpacity }}
+                animate={reduceMotion ? undefined : { opacity: [Math.max(copyOpacity, 0.45), Math.max(copyOpacity, 0.65), Math.max(copyOpacity, 0.45)] }}
+                transition={
+                  reduceMotion
+                    ? undefined
+                    : { duration: 3.8, repeat: Infinity, ease: 'easeInOut' }
+                }
               >
                 <span>{date}</span>
                 <span className="hidden md:inline">•</span>
@@ -137,6 +168,19 @@ export default function ScrollExpansionHero({
               <motion.div
                 className="relative overflow-hidden rounded-[2rem] border border-white/70 bg-white/20 shadow-[0_20px_60px_rgba(90,110,88,0.18)] backdrop-blur-md"
                 style={{ width: dimensions.width, height: dimensions.height }}
+                animate={
+                  reduceMotion
+                    ? undefined
+                    : {
+                        y: [0, -10, 0],
+                        scale: [1, isMobile ? 1.02 : 1.015, 1],
+                      }
+                }
+                transition={
+                  reduceMotion
+                    ? undefined
+                    : { duration: 6.5, repeat: Infinity, ease: 'easeInOut' }
+                }
               >
                 {mediaType === 'video' ? (
                   <video
