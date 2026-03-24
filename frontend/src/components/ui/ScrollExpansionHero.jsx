@@ -17,6 +17,8 @@ export default function ScrollExpansionHero({
   const sectionRef = useRef(null)
   const reduceMotion = useReducedMotion()
   const [progress, setProgress] = useState(0)
+  const [autoProgress, setAutoProgress] = useState(0)
+  const [userInteracted, setUserInteracted] = useState(false)
   const [viewport, setViewport] = useState({ width: 0, height: 0 })
 
   useEffect(() => {
@@ -31,8 +33,43 @@ export default function ScrollExpansionHero({
 
   useEffect(() => {
     if (reduceMotion) {
+      setAutoProgress(1)
+      return undefined
+    }
+
+    let frameId = null
+    const duration = 5200
+    const start = performance.now()
+
+    const animate = (now) => {
+      const elapsed = now - start
+      const nextValue = clamp(elapsed / duration)
+      setAutoProgress(nextValue)
+
+      if (nextValue < 1 && !userInteracted) {
+        frameId = window.requestAnimationFrame(animate)
+      }
+    }
+
+    if (!userInteracted) {
+      frameId = window.requestAnimationFrame(animate)
+    }
+
+    return () => {
+      if (frameId !== null) {
+        window.cancelAnimationFrame(frameId)
+      }
+    }
+  }, [reduceMotion, userInteracted])
+
+  useEffect(() => {
+    if (reduceMotion) {
       setProgress(1)
       return undefined
+    }
+
+    const registerInteraction = () => {
+      setUserInteracted(true)
     }
 
     const updateProgress = () => {
@@ -47,27 +84,35 @@ export default function ScrollExpansionHero({
     updateProgress()
     window.addEventListener('scroll', updateProgress, { passive: true })
     window.addEventListener('resize', updateProgress)
+    window.addEventListener('wheel', registerInteraction, { passive: true })
+    window.addEventListener('touchstart', registerInteraction, { passive: true })
+    window.addEventListener('keydown', registerInteraction)
 
     return () => {
       window.removeEventListener('scroll', updateProgress)
       window.removeEventListener('resize', updateProgress)
+      window.removeEventListener('wheel', registerInteraction)
+      window.removeEventListener('touchstart', registerInteraction)
+      window.removeEventListener('keydown', registerInteraction)
     }
   }, [reduceMotion])
+
+  const animatedProgress = userInteracted ? progress : Math.max(progress, autoProgress)
 
   const dimensions = useMemo(() => {
     const maxWidth = viewport.width < 768 ? viewport.width * 0.88 : Math.min(viewport.width * 0.9, 1180)
     const minWidth = viewport.width < 768 ? viewport.width * 0.72 : 360
-    const width = minWidth + (maxWidth - minWidth) * progress
+    const width = minWidth + (maxWidth - minWidth) * animatedProgress
     const minHeight = viewport.width < 768 ? 280 : 500
     const maxHeight = viewport.width < 768 ? viewport.height * 0.72 : viewport.height * 0.82
-    const height = minHeight + (maxHeight - minHeight) * progress
+    const height = minHeight + (maxHeight - minHeight) * animatedProgress
 
     return { width, height }
-  }, [progress, viewport.height, viewport.width])
+  }, [animatedProgress, viewport.height, viewport.width])
 
-  const titleOffset = reduceMotion ? 0 : (1 - progress) * (viewport.width < 768 ? 60 : 120)
-  const overlayOpacity = 0.2 + progress * 0.28
-  const copyOpacity = clamp((progress - 0.52) / 0.32)
+  const titleOffset = reduceMotion ? 0 : (1 - animatedProgress) * (viewport.width < 768 ? 60 : 120)
+  const overlayOpacity = 0.2 + animatedProgress * 0.28
+  const copyOpacity = clamp((animatedProgress - 0.52) / 0.32)
   const isMobile = viewport.width < 768
 
   const titleParts = title?.split(' ') || []
@@ -79,7 +124,7 @@ export default function ScrollExpansionHero({
       <div className="sticky top-0 h-screen overflow-hidden">
         <motion.div
           className="absolute inset-0"
-          style={{ opacity: reduceMotion ? 1 : 1 - progress * 0.72 }}
+          style={{ opacity: reduceMotion ? 1 : 1 - animatedProgress * 0.72 }}
         >
           <img
             src={bgImageSrc}
@@ -95,13 +140,7 @@ export default function ScrollExpansionHero({
             <div className="relative order-1 flex flex-col justify-center">
               <motion.p
                 className="text-xs uppercase tracking-[0.45em] text-text-mid"
-                style={{ x: -titleOffset * 0.45, opacity: 0.7 + progress * 0.3 }}
-                animate={reduceMotion ? undefined : { y: [0, -4, 0] }}
-                transition={
-                  reduceMotion
-                    ? undefined
-                    : { duration: 4.8, repeat: Infinity, ease: 'easeInOut' }
-                }
+                style={{ x: -titleOffset * 0.45, opacity: 0.7 + animatedProgress * 0.3 }}
               >
                 {eyebrow}
               </motion.p>
@@ -110,12 +149,6 @@ export default function ScrollExpansionHero({
                 <motion.h1
                   className="font-heading text-5xl italic leading-[0.9] text-text-dark sm:text-6xl md:text-7xl lg:text-[7rem]"
                   style={{ x: -titleOffset }}
-                  animate={reduceMotion ? undefined : { y: [0, -8, 0] }}
-                  transition={
-                    reduceMotion
-                      ? undefined
-                      : { duration: 5.5, repeat: Infinity, ease: 'easeInOut' }
-                  }
                 >
                   {firstLine}
                 </motion.h1>
@@ -123,12 +156,6 @@ export default function ScrollExpansionHero({
                   <motion.h1
                     className="mt-1 font-heading text-5xl italic leading-[0.9] text-[#9ab89a] sm:text-6xl md:text-7xl lg:text-[7rem]"
                     style={{ x: titleOffset }}
-                    animate={reduceMotion ? undefined : { y: [0, 8, 0] }}
-                    transition={
-                      reduceMotion
-                        ? undefined
-                        : { duration: 5.5, repeat: Infinity, ease: 'easeInOut' }
-                    }
                   >
                     {secondLine}
                   </motion.h1>
@@ -137,13 +164,7 @@ export default function ScrollExpansionHero({
 
               <motion.p
                 className="mt-6 max-w-xl text-base leading-7 text-text-mid md:mt-8 md:text-2xl md:leading-10"
-                style={{ opacity: 0.4 + progress * 0.6, y: reduceMotion ? 0 : (1 - progress) * 28 }}
-                animate={reduceMotion ? undefined : { y: [0, -6, 0] }}
-                transition={
-                  reduceMotion
-                    ? undefined
-                    : { duration: 6.2, repeat: Infinity, ease: 'easeInOut' }
-                }
+                style={{ opacity: 0.4 + animatedProgress * 0.6, y: reduceMotion ? 0 : (1 - animatedProgress) * 28 }}
               >
                 {description}
               </motion.p>
@@ -151,12 +172,6 @@ export default function ScrollExpansionHero({
               <motion.div
                 className="mt-8 flex flex-wrap gap-3 text-xs uppercase tracking-[0.24em] text-text-mid md:mt-10 md:gap-4 md:text-sm"
                 style={{ opacity: copyOpacity }}
-                animate={reduceMotion ? undefined : { opacity: [Math.max(copyOpacity, 0.45), Math.max(copyOpacity, 0.65), Math.max(copyOpacity, 0.45)] }}
-                transition={
-                  reduceMotion
-                    ? undefined
-                    : { duration: 3.8, repeat: Infinity, ease: 'easeInOut' }
-                }
               >
                 <span>{date}</span>
                 <span className="hidden md:inline">•</span>
@@ -168,18 +183,11 @@ export default function ScrollExpansionHero({
               <motion.div
                 className="relative overflow-hidden rounded-[2rem] border border-white/70 bg-white/20 shadow-[0_20px_60px_rgba(90,110,88,0.18)] backdrop-blur-md"
                 style={{ width: dimensions.width, height: dimensions.height }}
-                animate={
-                  reduceMotion
-                    ? undefined
-                    : {
-                        y: [0, -10, 0],
-                        scale: [1, isMobile ? 1.02 : 1.015, 1],
-                      }
-                }
+                animate={reduceMotion || userInteracted ? undefined : { y: [10, 0] }}
                 transition={
-                  reduceMotion
+                  reduceMotion || userInteracted
                     ? undefined
-                    : { duration: 6.5, repeat: Infinity, ease: 'easeInOut' }
+                    : { duration: 5.2, ease: 'easeInOut' }
                 }
               >
                 {mediaType === 'video' ? (
