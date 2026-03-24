@@ -1,5 +1,4 @@
 ﻿import { Link } from 'react-router-dom'
-import { useState } from 'react'
 import ScrollReveal from '../components/ScrollReveal'
 import ScrollExpansionHero from '../components/ui/ScrollExpansionHero'
 
@@ -38,11 +37,7 @@ const detalles = [
   },
 ]
 
-const motivos = ['La musica', 'El brindis', 'Bailar', 'Las fotos', 'El reencuentro', 'Vero']
-
 export default function Invitation() {
-  const [meTesiCount, setMeTeseCount] = useState(0)
-
   return (
     <main className="bg-cream text-text-dark">
       <ScrollExpansionHero
@@ -85,18 +80,54 @@ export default function Invitation() {
             Quiero celebrar este cierre con la gente que estuvo cerca durante el camino, con una noche suave, linda y llena de recuerdos.
           </p>
           <p className="mx-auto mt-8 max-w-2xl text-base leading-8 text-text-mid md:text-lg">
-            A medida que sigues bajando, aparecen las secciones que despues vamos a poder ajustar una por una: info, mensaje, mapa y un bloque mas relajado para interactuar.
+            A medida que sigues bajando, aparecen secciones separadas para confirmar asistencia, sumar fotos y llegar facilmente al lugar.
           </p>
-          <div className="mt-10 flex flex-col justify-center gap-4 sm:flex-row">
+        </ScrollReveal>
+      </section>
+
+      <section className="relative mx-auto w-full max-w-5xl px-6 py-20 md:px-10 lg:py-28">
+        <ScrollReveal className="rounded-[2rem] border border-peach/45 bg-white/72 px-8 py-12 shadow-soft backdrop-blur-sm md:px-16 md:py-16">
+          <p className="text-xs uppercase tracking-[0.45em] text-text-mid">Seccion 03</p>
+          <h2 className="mt-4 font-heading text-4xl italic md:text-5xl">Confirmar asistencia</h2>
+          <p className="mt-8 max-w-2xl text-base leading-8 text-text-mid md:text-lg">
+            Si ya sabes que vienes, este bloque queda pensado para que confirmes en un solo toque y podamos organizarnos mejor.
+          </p>
+          <div className="mt-10 rounded-[1.75rem] border border-peach/40 bg-gradient-to-br from-white to-peach/20 p-6 md:p-8">
+            <p className="text-xs uppercase tracking-[0.32em] text-text-mid">RSVP</p>
+            <p className="mt-4 text-2xl font-semibold leading-snug text-text-dark md:text-3xl">
+              Reserva tu lugar para la noche de Vero
+            </p>
+            <p className="mt-4 max-w-xl text-sm leading-7 text-text-mid md:text-base">
+              Puedes confirmar asistencia y dejar un mensaje especial para que quede guardado como parte del recuerdo.
+            </p>
             <Link
               to="/rsvp"
-              className="inline-flex items-center justify-center rounded-full bg-peach px-8 py-4 text-sm font-semibold uppercase tracking-[0.2em] text-text-dark transition-all duration-300 hover:-translate-y-1 hover:bg-[#b9d6b7] hover:shadow-lg"
+              className="mt-8 inline-flex items-center justify-center rounded-full bg-peach px-8 py-4 text-sm font-semibold uppercase tracking-[0.2em] text-text-dark transition-all duration-300 hover:-translate-y-1 hover:bg-[#b9d6b7] hover:shadow-lg"
             >
               Confirmar asistencia
             </Link>
+          </div>
+        </ScrollReveal>
+      </section>
+
+      <section className="relative mx-auto w-full max-w-5xl px-6 py-20 md:px-10 lg:py-28">
+        <ScrollReveal className="rounded-[2rem] border border-peach/45 bg-gradient-to-b from-white/78 to-peach/20 px-8 py-12 shadow-soft backdrop-blur-sm md:px-16 md:py-16">
+          <p className="text-xs uppercase tracking-[0.45em] text-text-mid">Seccion 04</p>
+          <h2 className="mt-4 font-heading text-4xl italic md:text-5xl">Subir fotos</h2>
+          <p className="mt-8 max-w-2xl text-base leading-8 text-text-mid md:text-lg">
+            Me encantaria que cada una pueda sumar su mirada de la noche. Esta card queda dedicada a reunir fotos y recuerdos del evento.
+          </p>
+          <div className="mt-10 rounded-[1.75rem] border border-peach/40 bg-white/85 p-6 shadow-soft md:p-8">
+            <p className="text-xs uppercase tracking-[0.32em] text-text-mid">Galeria colaborativa</p>
+            <p className="mt-4 text-2xl font-semibold leading-snug text-text-dark md:text-3xl">
+              Comparte tus fotos favoritas de la recibida
+            </p>
+            <p className="mt-4 max-w-xl text-sm leading-7 text-text-mid md:text-base">
+              Sube imagenes desde el celular para que despues armemos un recuerdo comun de toda la noche.
+            </p>
             <Link
               to="/upload"
-              className="inline-flex items-center justify-center rounded-full border border-peach/80 bg-transparent px-8 py-4 text-sm font-semibold uppercase tracking-[0.2em] text-text-dark transition-all duration-300 hover:-translate-y-1 hover:bg-peach/15"
+              className="mt-8 inline-flex items-center justify-center rounded-full border border-peach/80 bg-peach/35 px-8 py-4 text-sm font-semibold uppercase tracking-[0.2em] text-text-dark transition-all duration-300 hover:-translate-y-1 hover:bg-peach/55 hover:shadow-lg"
             >
               Subir fotos
             </Link>
@@ -108,7 +139,7 @@ export default function Invitation() {
         <div className="grid gap-10 lg:grid-cols-[0.9fr_1.1fr] lg:items-center">
           <div>
             <ScrollReveal>
-              <p className="text-xs uppercase tracking-[0.45em] text-text-mid">Seccion 03</p>
+              <p className="text-xs uppercase tracking-[0.45em] text-text-mid">Seccion 05</p>
               <h2 className="mt-4 font-heading text-4xl italic leading-tight md:text-5xl">
                 Ubicacion y mapa
               </h2>
@@ -148,38 +179,6 @@ export default function Invitation() {
                 />
               </div>
             </div>
-          </ScrollReveal>
-        </div>
-      </section>
-
-      <section className="relative mx-auto w-full max-w-5xl px-6 py-20 md:px-10 lg:py-28">
-        <div className="rounded-[2rem] border border-peach/45 bg-gradient-to-b from-white/75 to-peach/20 px-8 py-12 shadow-soft backdrop-blur-sm md:px-14 md:py-16">
-          <ScrollReveal>
-            <p className="text-center text-xs uppercase tracking-[0.45em] text-text-mid">Seccion 04</p>
-            <h2 className="mt-4 text-center font-heading text-4xl italic md:text-5xl">Me tesi</h2>
-            <p className="mx-auto mt-6 max-w-2xl text-center text-base leading-8 text-text-mid md:text-lg">
-              Lo dejo como un bloque liviano para jugar con la invitacion sin perder la elegancia general.
-            </p>
-          </ScrollReveal>
-
-          <div className="mt-10 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
-            {motivos.map((motivo, index) => (
-              <ScrollReveal key={motivo} delay={0.06 * (index + 1)}>
-                <button
-                  type="button"
-                  onClick={() => setMeTeseCount((value) => value + 1)}
-                  className="w-full rounded-[1.4rem] border border-peach/60 bg-white/85 px-5 py-5 text-left text-base font-semibold text-text-dark transition-all duration-300 hover:-translate-y-1 hover:border-[#b9d6b7] hover:bg-white hover:shadow-lg"
-                >
-                  {motivo}
-                </button>
-              </ScrollReveal>
-            ))}
-          </div>
-
-          <ScrollReveal delay={0.2} className="mt-10 text-center">
-            <p className="text-sm uppercase tracking-[0.35em] text-text-mid">Total de clicks</p>
-            <p className="mt-3 font-heading text-5xl italic text-text-dark">{meTesiCount}</p>
-            <p className="mt-4 text-base text-text-mid">Mientras mas te tiente, mas ganas de verte ahi.</p>
           </ScrollReveal>
         </div>
       </section>

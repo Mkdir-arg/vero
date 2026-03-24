@@ -5,6 +5,7 @@ import RSVP from './pages/RSVP'
 import Gallery from './pages/Gallery'
 import Upload from './pages/Upload'
 import Admin from './pages/Admin'
+import GlobalAudioPlayer from './components/GlobalAudioPlayer'
 
 function ScrollToTop() {
   const location = useLocation()
@@ -36,6 +37,7 @@ function ScrollToTop() {
 function App() {
   return (
     <Router>
+      <GlobalAudioPlayer />
       <ScrollToTop />
       <Routes>
         <Route path="/" element={<Invitation />} />
