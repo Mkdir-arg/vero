@@ -1,71 +1,71 @@
 export default function EntranceDiploma({ onEnter }) {
   return (
-    <div className="fixed inset-0 z-[80] flex items-center justify-center overflow-hidden bg-[radial-gradient(circle_at_top,_rgba(198,222,196,0.32),_transparent_30%),linear-gradient(180deg,_#fffef9_0%,_#faf7ef_54%,_#efe8d8_100%)] px-4">
+    <main className="fixed inset-0 z-[80] flex items-center justify-center overflow-hidden bg-[radial-gradient(circle_at_top,_rgba(198,222,196,0.3),_transparent_32%),linear-gradient(180deg,_#fcf9f6_0%,_#f7f4ef_58%,_#efe8dd_100%)] px-6">
       <div className="pointer-events-none absolute inset-0 overflow-hidden">
-        <div className="absolute left-1/2 top-12 h-56 w-56 -translate-x-1/2 rounded-full bg-peach/25 blur-3xl" />
-        <div className="absolute bottom-8 left-4 h-40 w-40 rounded-full bg-blush/55 blur-3xl" />
-        <div className="absolute right-4 top-1/3 h-44 w-44 rounded-full bg-peach/18 blur-3xl" />
-        <div className="absolute inset-x-0 top-0 h-32 bg-gradient-to-b from-white/60 to-transparent" />
+        <img
+          alt=""
+          className="absolute -left-[22%] -top-[10%] w-[140%] max-w-none rotate-[10deg] opacity-[0.11] blur-[10px] mix-blend-multiply"
+          src="https://lh3.googleusercontent.com/aida-public/AB6AXuA6Xpp5q33aXouA0_IOHZp6RLxtajoCapjx7KFLHltALHQlS-tp7eIux8-rApP9_7LWdjVqwS_PL7bFN722JXmtPoa1oQF1XlzSOmnCY42IFyiYRQspnTsxSK6uQG_3g9rCCLm67Naib8X90BQVGAigsEWwXIhc_P1MyxQlV2oGitcd8wOywDTijEr5dBhbZe8Lybt2mRt8BRzck12XRNQdyqAfRz6MpkLeg61Czr15UretplSTA4MJJADFsX62PJrEm6eD7HPsFDo"
+        />
+        <img
+          alt=""
+          className="absolute -bottom-[14%] -right-[8%] w-[120%] max-w-none -rotate-[34deg] opacity-[0.11] blur-[10px] mix-blend-multiply"
+          src="https://lh3.googleusercontent.com/aida-public/AB6AXuCABP8UPHnpakw6Jd0bsuyfUhJz_y72PMTpbakU3OiW44arKEWkU0YkgFihst7H96wyzTqwuzKAqgKE9U4PdA5mKyqt90upxTWEGLlzVkcuq9YP5dC-oX0_SBpkC-89e-HqhD8EbJYjPxAHChZN3wqBWpQmaeshla0m-Wlx-AcOFUboo9ID7ZG9slWtK0bwOM9DqAIb36RWcEeDEEKjQOLAsXH3RSDllDGPjQAjcaxfRHDpwKPVFbmaobM2eYBd0f8DqDLuKplNAvE"
+        />
       </div>
 
-      <button
-        type="button"
-        onClick={onEnter}
-        className="group relative w-full max-w-[25rem] transition-all duration-500 hover:-translate-y-1 active:scale-[0.985]"
-      >
-        <div className="absolute inset-x-8 bottom-0 h-8 rounded-full bg-[#9fb19a]/20 blur-2xl" />
+      <div className="relative z-10 flex w-full max-w-sm flex-col items-center">
+        <div className="mb-10 space-y-2 text-center">
+          <p className="text-[10px] uppercase tracking-[0.42em] text-[#8ea98c]">
+            Invitacion ceremonial
+          </p>
+          <h1 className="font-heading text-4xl italic tracking-tight text-text-dark sm:text-5xl">
+            Vero 2024
+          </h1>
+        </div>
 
-        <div className="relative pt-10">
-          <div className="absolute left-1/2 top-0 z-30 h-16 w-[2px] -translate-x-1/2 bg-gradient-to-b from-[#d8c59a] to-transparent" />
+        <button
+          type="button"
+          onClick={onEnter}
+          className="group relative aspect-[5/4] w-full cursor-pointer transition-transform duration-500 active:scale-95"
+        >
+          <div className="absolute inset-0 rounded-[1.35rem] border border-[#e3dfd8] bg-white shadow-[0_20px_50px_-12px_rgba(0,0,0,0.1),0_10px_20px_-10px_rgba(0,0,0,0.05)]" />
+          <div className="absolute inset-0 rounded-[1.35rem] bg-[radial-gradient(circle_at_top,_rgba(255,255,255,0.95),_rgba(255,255,255,0.3)),url('https://lh3.googleusercontent.com/aida-public/AB6AXuAjzU-nXy5FG5L3_5e1F1BHVnjYd8fByZv6PTzapkss88Eytd2nUj6WzsVtCyLJc5hYKk81oXzOlXjej7w60Mqd0MuK5yYrV4MrIEwBSp6zoTTBMQ0q4LMf47a3sY7498cLEj9OzBahzGDZukFdgtzBpdgBu05h_NquLb3BS-0s2Z3Qd5NDpGh9g-BMIzBMdP2jRvAEiO70ocLWo1C6E92XXYnFJWE9B9Sqga7TkFCfXyAL6OdEymxZ6rIKF_-b9lcRF_fFIZEycak')] bg-cover bg-center opacity-20" />
+          <div className="absolute inset-[12px] rounded-[1rem] border-[10px] border-[#c6dec4]/18" />
 
-          <div className="absolute left-2 top-1/2 z-20 h-[74%] w-8 -translate-y-1/2 rounded-full border border-[#b99d6f] bg-[linear-gradient(180deg,#f8efda_0%,#dcc28e_20%,#f6ecd0_48%,#cfb171_78%,#f7edd2_100%)] shadow-[inset_0_0_14px_rgba(120,90,30,0.16),0_12px_22px_rgba(120,90,30,0.16)]" />
-          <div className="absolute right-2 top-1/2 z-20 h-[74%] w-8 -translate-y-1/2 rounded-full border border-[#b99d6f] bg-[linear-gradient(180deg,#f8efda_0%,#dcc28e_20%,#f6ecd0_48%,#cfb171_78%,#f7edd2_100%)] shadow-[inset_0_0_14px_rgba(120,90,30,0.16),0_12px_22px_rgba(120,90,30,0.16)]" />
+          <div
+            className="absolute inset-x-0 top-0 z-10 h-full rounded-t-[1.35rem] border-b border-[#e5e2df]/40 bg-white/95 shadow-sm"
+            style={{ clipPath: 'polygon(0 0, 100% 0, 50% 60%)' }}
+          >
+            <div className="absolute inset-0 rounded-t-[1.35rem] bg-[radial-gradient(circle_at_top,_rgba(255,255,255,0.85),_rgba(255,255,255,0.15)),url('https://lh3.googleusercontent.com/aida-public/AB6AXuAjzU-nXy5FG5L3_5e1F1BHVnjYd8fByZv6PTzapkss88Eytd2nUj6WzsVtCyLJc5hYKk81oXzOlXjej7w60Mqd0MuK5yYrV4MrIEwBSp6zoTTBMQ0q4LMf47a3sY7498cLEj9OzBahzGDZukFdgtzBpdgBu05h_NquLb3BS-0s2Z3Qd5NDpGh9g-BMIzBMdP2jRvAEiO70ocLWo1C6E92XXYnFJWE9B9Sqga7TkFCfXyAL6OdEymxZ6rIKF_-b9lcRF_fFIZEycak')] bg-cover bg-center opacity-10" />
+          </div>
 
-          <div className="relative overflow-hidden rounded-[3rem] border border-[#d9c79f] bg-[linear-gradient(180deg,#fffdf8_0%,#fbf5e8_36%,#f3ead7_100%)] px-10 pb-16 pt-14 shadow-[0_34px_80px_rgba(101,82,44,0.16)]">
-            <div className="absolute inset-3 rounded-[2.35rem] border border-[#e7dcc1]/90" />
-            <div className="absolute inset-x-12 top-8 h-px bg-gradient-to-r from-transparent via-[#c6dec4] to-transparent" />
-            <div className="absolute inset-x-12 bottom-8 h-px bg-gradient-to-r from-transparent via-[#c6dec4] to-transparent" />
-            <div className="absolute left-6 top-6 h-20 w-20 rounded-full bg-white/45 blur-xl" />
-            <div className="absolute right-6 top-10 h-16 w-16 rounded-full bg-[#c6dec4]/18 blur-xl" />
-
-            <div className="relative z-10">
-              <p className="text-center text-[11px] uppercase tracking-[0.52em] text-text-mid">
-                Invitacion de recibida
-              </p>
-
-              <div className="mx-auto mt-8 flex h-24 w-24 items-center justify-center rounded-full border border-[#ceb98b] bg-[radial-gradient(circle_at_30%_30%,#fffef7_0%,#f3ead5_60%,#deca96_100%)] shadow-[inset_0_3px_14px_rgba(255,255,255,0.85),0_14px_30px_rgba(150,125,70,0.2)]">
-                <span className="font-heading text-4xl italic text-text-dark">V</span>
-              </div>
-
-              <h1 className="mt-8 text-center font-heading text-[2.7rem] italic leading-[0.92] text-text-dark">
-                Toca para
-                <span className="block text-[#93ae91]">ingresar</span>
-              </h1>
-
-              <p className="mx-auto mt-5 max-w-[16rem] text-center text-sm leading-7 text-text-mid">
-                Abre la invitacion, enciende la musica y deja que empiece la noche.
-              </p>
-
-              <div className="mt-8 flex items-center justify-center gap-3">
-                <span className="h-px w-12 bg-gradient-to-r from-transparent to-[#c6dec4]" />
-                <span className="rounded-full border border-[#d8c9a2] bg-white/55 px-4 py-2 text-[10px] uppercase tracking-[0.34em] text-text-dark shadow-[0_8px_18px_rgba(120,90,30,0.08)]">
-                  Tap to enter
-                </span>
-                <span className="h-px w-12 bg-gradient-to-l from-transparent to-[#c6dec4]" />
-              </div>
+          <div className="absolute left-1/2 top-[35%] z-20 -translate-x-1/2 -translate-y-1/2">
+            <div className="relative flex h-16 w-16 items-center justify-center rounded-full border-2 border-[#8e6f10]/30 bg-[linear-gradient(135deg,#fed65b_0%,#785a00_100%)] shadow-[0_8px_20px_rgba(115,92,0,0.35)]">
+              <div className="absolute inset-[-4px] rounded-full border-[6px] border-[#785a00]/20 blur-[1px]" />
+              <span className="relative font-heading text-2xl italic text-white">V</span>
+              <div className="absolute inset-[5px] rounded-full border border-white/30" />
             </div>
           </div>
 
-          <div className="absolute left-1/2 top-0 z-40 flex -translate-x-1/2 flex-col items-center">
-            <div className="h-6 w-6 rounded-full border border-[#ceb98b] bg-[radial-gradient(circle_at_30%_30%,#fff9ea_0%,#f0dfb5_65%,#d4b878_100%)] shadow-[0_8px_18px_rgba(120,90,30,0.18)]" />
-            <div className="mt-2 flex h-16 w-16 items-center justify-center rounded-full border border-[#c7b182] bg-[radial-gradient(circle_at_30%_30%,#fffdf6_0%,#f1e7d0_58%,#dbc08b_100%)] shadow-[0_14px_28px_rgba(120,90,30,0.18)]">
-              <span className="font-heading text-sm uppercase tracking-[0.22em] text-text-dark">
-                Vero
-              </span>
-            </div>
+          <div className="absolute inset-0 rounded-[1.35rem] bg-[#c6dec4]/5 opacity-0 transition-opacity duration-500 group-hover:opacity-100" />
+        </button>
+
+        <div className="mt-12 text-center">
+          <div className="inline-flex animate-[breathe_3s_ease-in-out_infinite] flex-col items-center gap-4">
+            <span className="font-heading text-xl italic tracking-wide text-[#5f675e]">
+              Toca para ingresar
+            </span>
+            <div className="h-px w-10 bg-[#c6dec4]/60" />
           </div>
         </div>
-      </button>
-    </div>
+
+        <footer className="pointer-events-none fixed bottom-10 left-1/2 w-full -translate-x-1/2 px-8 text-center">
+          <span className="block text-[9px] uppercase tracking-[0.4em] text-text-dark/35">
+            Una experiencia digital premium
+          </span>
+        </footer>
+      </div>
+    </main>
   )
 }
