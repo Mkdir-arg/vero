@@ -1,4 +1,4 @@
-import { useEffect } from 'react'
+import { useEffect, useState } from 'react'
 import { BrowserRouter as Router, Routes, Route, useLocation } from 'react-router-dom'
 import Invitation from './pages/Invitation'
 import RSVP from './pages/RSVP'
@@ -6,6 +6,7 @@ import Gallery from './pages/Gallery'
 import Upload from './pages/Upload'
 import Admin from './pages/Admin'
 import GlobalAudioPlayer from './components/GlobalAudioPlayer'
+import EntranceDiploma from './components/EntranceDiploma'
 
 function ScrollToTop() {
   const location = useLocation()
@@ -35,9 +36,12 @@ function ScrollToTop() {
 }
 
 function App() {
+  const [hasEntered, setHasEntered] = useState(false)
+
   return (
     <Router>
-      <GlobalAudioPlayer />
+      <GlobalAudioPlayer shouldStart={hasEntered} />
+      {!hasEntered ? <EntranceDiploma onEnter={() => setHasEntered(true)} /> : null}
       <ScrollToTop />
       <Routes>
         <Route path="/" element={<Invitation />} />
