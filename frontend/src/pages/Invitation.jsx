@@ -12,10 +12,8 @@ const EVENTO = {
   direccion: 'Agrega aqui la direccion exacta del evento',
   mapsEmbed: 'https://www.google.com/maps?q=Buenos+Aires,+Argentina&z=14&output=embed',
   mapsLink: 'https://maps.google.com/?q=Buenos+Aires,+Argentina',
-  heroImage:
-    'https://images.unsplash.com/photo-1519741497674-611481863552?auto=format&fit=crop&w=1400&q=80',
-  heroBackground:
-    'https://images.unsplash.com/photo-1492684223066-81342ee5ff30?auto=format&fit=crop&w=1600&q=80',
+  heroImage: '/vero-hero.jpeg',
+  heroBackground: '/vero-hero.jpeg',
 }
 
 const detalles = [
