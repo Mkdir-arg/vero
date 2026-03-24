@@ -19,6 +19,7 @@ export default function ScrollExpansionHero({
   const [progress, setProgress] = useState(0)
   const [autoProgress, setAutoProgress] = useState(0)
   const [userInteracted, setUserInteracted] = useState(false)
+  const [lockedProgress, setLockedProgress] = useState(0)
   const [viewport, setViewport] = useState({ width: 0, height: 0 })
 
   useEffect(() => {
@@ -69,6 +70,7 @@ export default function ScrollExpansionHero({
     }
 
     const registerInteraction = () => {
+      setLockedProgress((current) => Math.max(current, autoProgress, progress))
       setUserInteracted(true)
     }
 
@@ -95,9 +97,11 @@ export default function ScrollExpansionHero({
       window.removeEventListener('touchstart', registerInteraction)
       window.removeEventListener('keydown', registerInteraction)
     }
-  }, [reduceMotion])
+  }, [autoProgress, progress, reduceMotion])
 
-  const animatedProgress = userInteracted ? progress : Math.max(progress, autoProgress)
+  const animatedProgress = userInteracted
+    ? Math.max(progress, lockedProgress)
+    : Math.max(progress, autoProgress)
 
   const dimensions = useMemo(() => {
     const maxWidth = viewport.width < 768 ? viewport.width * 0.88 : Math.min(viewport.width * 0.9, 1180)
