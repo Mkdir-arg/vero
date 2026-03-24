@@ -13,6 +13,7 @@ export default function ScrollExpansionHero({
   date,
   scrollHint,
   description,
+  isActive = true,
 }) {
   const sectionRef = useRef(null)
   const reduceMotion = useReducedMotion()
@@ -33,6 +34,11 @@ export default function ScrollExpansionHero({
   }, [])
 
   useEffect(() => {
+    if (!isActive) {
+      setAutoProgress(0)
+      return undefined
+    }
+
     if (reduceMotion) {
       setAutoProgress(1)
       return undefined
@@ -61,9 +67,16 @@ export default function ScrollExpansionHero({
         window.cancelAnimationFrame(frameId)
       }
     }
-  }, [reduceMotion, userInteracted])
+  }, [isActive, reduceMotion, userInteracted])
 
   useEffect(() => {
+    if (!isActive) {
+      setProgress(0)
+      setUserInteracted(false)
+      setLockedProgress(0)
+      return undefined
+    }
+
     if (reduceMotion) {
       setProgress(1)
       return undefined
@@ -97,7 +110,7 @@ export default function ScrollExpansionHero({
       window.removeEventListener('touchstart', registerInteraction)
       window.removeEventListener('keydown', registerInteraction)
     }
-  }, [autoProgress, progress, reduceMotion])
+  }, [autoProgress, isActive, progress, reduceMotion])
 
   const animatedProgress = userInteracted
     ? Math.max(progress, lockedProgress)
@@ -187,9 +200,9 @@ export default function ScrollExpansionHero({
               <motion.div
                 className="relative overflow-hidden rounded-[2rem] border border-white/70 bg-white/20 shadow-[0_20px_60px_rgba(90,110,88,0.18)] backdrop-blur-md"
                 style={{ width: dimensions.width, height: dimensions.height }}
-                animate={reduceMotion || userInteracted ? undefined : { y: [10, 0] }}
+                animate={reduceMotion || userInteracted || !isActive ? undefined : { y: [10, 0] }}
                 transition={
-                  reduceMotion || userInteracted
+                  reduceMotion || userInteracted || !isActive
                     ? undefined
                     : { duration: 5.2, ease: 'easeInOut' }
                 }

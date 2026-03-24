@@ -43,13 +43,15 @@ function App() {
       <GlobalAudioPlayer shouldStart={hasEntered} />
       {!hasEntered ? <EntranceDiploma onEnter={() => setHasEntered(true)} /> : null}
       <ScrollToTop />
-      <Routes>
-        <Route path="/" element={<Invitation />} />
-        <Route path="/rsvp" element={<RSVP />} />
-        <Route path="/gallery" element={<Gallery />} />
-        <Route path="/upload" element={<Upload />} />
-        <Route path="/admin" element={<Admin />} />
-      </Routes>
+      {hasEntered ? (
+        <Routes>
+          <Route path="/" element={<Invitation isActive={hasEntered} />} />
+          <Route path="/rsvp" element={<RSVP />} />
+          <Route path="/gallery" element={<Gallery />} />
+          <Route path="/upload" element={<Upload />} />
+          <Route path="/admin" element={<Admin />} />
+        </Routes>
+      ) : null}
     </Router>
   )
 }

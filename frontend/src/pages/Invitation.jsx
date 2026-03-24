@@ -37,7 +37,7 @@ const detalles = [
   },
 ]
 
-export default function Invitation() {
+export default function Invitation({ isActive = true }) {
   return (
     <main className="bg-cream text-text-dark">
       <ScrollExpansionHero
@@ -49,6 +49,7 @@ export default function Invitation() {
         date={`${EVENTO.fecha} · ${EVENTO.hora}`}
         scrollHint="Desliza para descubrir la noche"
         description={EVENTO.subtitulo}
+        isActive={isActive}
       />
 
       <section className="relative mx-auto w-full max-w-6xl px-6 py-20 md:px-10 lg:px-16 lg:py-28">
