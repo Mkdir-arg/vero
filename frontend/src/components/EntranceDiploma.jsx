@@ -17,10 +17,10 @@ export default function EntranceDiploma({ onEnter }) {
       <div className="relative z-10 flex w-full max-w-sm flex-col items-center">
         <div className="mb-10 space-y-2 text-center">
           <p className="text-[10px] uppercase tracking-[0.42em] text-[#8ea98c]">
-            Invitacion ceremonial
+            Mi Lauria
           </p>
           <h1 className="font-heading text-4xl italic tracking-tight text-text-dark sm:text-5xl">
-            Vero 2024
+            Vero 2026
           </h1>
         </div>
 
@@ -62,7 +62,7 @@ export default function EntranceDiploma({ onEnter }) {
 
         <footer className="pointer-events-none fixed bottom-10 left-1/2 w-full -translate-x-1/2 px-8 text-center">
           <span className="block text-[9px] uppercase tracking-[0.4em] text-text-dark/35">
-            Una experiencia digital premium
+            
           </span>
         </footer>
       </div>
