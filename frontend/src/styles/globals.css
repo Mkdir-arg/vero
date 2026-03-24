@@ -1,0 +1,88 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Custom base styles */
+@layer base {
+  html {
+    @apply scroll-smooth;
+  }
+
+  body {
+    @apply bg-cream text-text-dark font-body antialiased;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    @apply font-heading font-normal;
+  }
+}
+
+/* Custom component utilities */
+@layer components {
+  .card-soft {
+    @apply bg-white/80 backdrop-blur-md rounded-custom shadow-soft border border-blush/30 hover:border-rose/30 transition-all duration-500;
+  }
+
+  .card-glass {
+    @apply bg-white/40 backdrop-blur-lg rounded-custom shadow-soft border border-white/50 hover:bg-white/50 transition-all duration-500;
+  }
+
+  .btn-primary {
+    @apply px-6 py-3 bg-rose text-white rounded-lg font-medium transition-all duration-300 hover:bg-rose hover:shadow-lg active:scale-95;
+  }
+
+  .btn-secondary {
+    @apply px-6 py-3 border-2 border-rose text-rose rounded-lg font-medium transition-all duration-300 hover:bg-rose/5 active:scale-95;
+  }
+
+  .btn-ghost {
+    @apply px-6 py-3 text-text-dark rounded-lg font-medium transition-all duration-300 hover:bg-peach/30 active:scale-95;
+  }
+
+  .input-soft {
+    @apply w-full px-4 py-2 bg-white/80 backdrop-blur border border-blush/30 rounded-lg text-text-dark focus:outline-none focus:ring-2 focus:ring-rose/50 focus:border-rose transition-all duration-300 hover:bg-white/90;
+  }
+
+  .photo-card {
+    @apply rounded-lg overflow-hidden shadow-soft hover:shadow-lg transition-all duration-300;
+  }
+
+  .photo-card img {
+    @apply w-full h-auto object-cover transition-transform duration-500;
+  }
+
+  .photo-card:hover img {
+    @apply scale-110;
+  }
+
+  .section-title {
+    @apply text-3xl md:text-4xl font-heading italic text-center text-text-dark mb-8;
+  }
+}
+
+/* Scrollbar styling */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--peach);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--rose);
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--text-mid);
+}
+
+/* Animation utilities */
+.fade-in-up {
+  @apply animate-fade-in-up;
+}
+
+.float-petal {
+  @apply animate-float-petal;
+}
